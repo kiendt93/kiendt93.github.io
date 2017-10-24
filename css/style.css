@@ -25559,7 +25559,7 @@ html .page .offset-top-88 {
 }
 
 .page .box-custom-variant-1.box-custom-no-image .box-header:before, .page .box-custom-variant-1.box-custom-no-image .box-header:after {
-	left: -17px;
+	/*left: -17px;*/
 }
 
 @media (min-width: 992px) {
