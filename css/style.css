@@ -22614,6 +22614,9 @@ hr {
 .min-width-230 {
 	min-width: 230px;
 }
+.min-width-280 {
+	min-width: 280px;
+}
 
 @media (min-width: 992px) {
 	html .page .shift-md-top-10 {
@@ -39078,4 +39081,7 @@ img.mfp-img {
 	.padding-left-34{
 		padding-left: 34px;
 	}
+}
+.isotope-item{
+	margin-bottom: 10px;
 }
