@@ -18762,7 +18762,7 @@ textarea.form-control {
 	.form-label-outside, .form-label-outside.focus, .form-label-outside.auto-fill {
 		-webkit-transform: none;
 		transform: none;
-		color: #999;
+		color:#313132;
 		font-size: 14px;
 	}
 }
