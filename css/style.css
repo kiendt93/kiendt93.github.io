@@ -25418,7 +25418,7 @@ html .page .offset-top-88 {
 	width: 120vw;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
-	background: #fdba2d;
+	background: #0061af;
 }
 
 .box-custom-variant-1 .box-header:after,
@@ -25438,7 +25438,7 @@ html .page .offset-top-88 {
 }
 
 .box-custom-variant-1 .box-header, .box-custom-variant-1 .box-header * {
-	color: #ef4c36;
+	color: #fff;
 }
 
 .box-custom-variant-1 .box-header:before, .box-custom-variant-1 .box-header:after {
@@ -35183,7 +35183,7 @@ div.rd-search-results-live.active {
 		color: #222;
 	}
 	.responsive-tabs-primary .resp-accordion, .responsive-tabs-primary .resp-accordion a, .responsive-tabs-primary .resp-tabs-list > li, .responsive-tabs-primary .resp-tabs-list > li a {
-		color: #ef4c36;
+		color: #0061af;
 	}
 	.responsive-tabs-primary .resp-accordion:hover, .responsive-tabs-primary .resp-accordion:hover a, .responsive-tabs-primary .resp-accordion.resp-tab-active, .responsive-tabs-primary .resp-accordion.resp-tab-active a, .responsive-tabs-primary .resp-tabs-list > li:hover, .responsive-tabs-primary .resp-tabs-list > li:hover a, .responsive-tabs-primary .resp-tabs-list > li.resp-tab-active, .responsive-tabs-primary .resp-tabs-list > li.resp-tab-active a {
 		color: #222;
@@ -35291,7 +35291,7 @@ div.rd-search-results-live.active {
 		margin-top: 10px;
 	}
 	.responsive-tabs.responsive-tabs-vertical .resp-tabs-list .resp-tab-active {
-		border-right-color: #ef4c36;
+		border-right-color: #0061af;
 	}
 	.responsive-tabs.responsive-tabs-vertical .resp-tabs-container {
 		-webkit-flex-grow: 1;
