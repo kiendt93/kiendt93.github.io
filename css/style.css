@@ -21424,6 +21424,11 @@ textarea.form-control {
 	}
 }
 
+.page .section-20 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
 .page .section-40 {
 	padding-top: 40px;
 	padding-bottom: 40px;
@@ -22617,6 +22622,9 @@ hr {
 }
 .min-width-280 {
 	min-width: 280px;
+}
+.min-width-300 {
+	min-width: 300px;
 }
 
 @media (min-width: 992px) {
