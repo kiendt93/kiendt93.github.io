@@ -25442,7 +25442,7 @@ html .page .offset-top-88 {
 .box-custom-variant-1 .box-header {
 	position: relative;
 	z-index: 1;
-	padding: 30px 0;
+	padding: 20px 0;
 }
 
 .box-custom-variant-1 .box-header, .box-custom-variant-1 .box-header * {
@@ -25570,15 +25570,18 @@ html .page .offset-top-88 {
 		padding-left: 23.1%;
 	}
 }
-
-.page .box-custom-variant-1.box-custom-no-image {
-	padding-left: 17px;
+@media (min-width: 768px){
+	.page .box-custom-variant-1.box-custom-no-image {
+		padding-left: 17px;
+	}
+	.page .box-custom-variant-1.box-custom-no-image .box-header,
+	.page .box-custom-variant-1.box-custom-no-image .box-content {
+		padding-left: 17px;
+	}
 }
 
-.page .box-custom-variant-1.box-custom-no-image .box-header,
-.page .box-custom-variant-1.box-custom-no-image .box-content {
-	padding-left: 17px;
-}
+
+
 
 .page .box-custom-variant-1.box-custom-no-image .box-header:before, .page .box-custom-variant-1.box-custom-no-image .box-header:after {
 	/*left: -17px;*/
