@@ -3067,8 +3067,8 @@ address {
 }
 
 .bg-gray-dark {
-	background: #e8e7e7;
-	/*fill: #fdba2d;*/
+	background: #fdba2d;
+	fill: #fdba2d;
 }
 
 .bg-gray-dark .quote-variant-1 .quote-body:after {
@@ -3456,8 +3456,8 @@ fieldset[disabled] .page .btn-default {
 	color: #fff;
 	/*background-color: #42a4ff;
 	border-color: #42a4ff;*/
-	background-color: #0061af;
-	border-color: #0061af;
+	background-color: #0087ca;
+	border-color: #0087ca;
 	-webkit-box-shadow: 0px 2px 10px 0px rgba(19, 108, 191, 0.31);
 	box-shadow: 0px 2px 10px 0px rgba(19, 108, 191, 0.31);
 }
@@ -25418,7 +25418,7 @@ html .page .offset-top-88 {
 	width: 120vw;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
-	background: #0061af;
+	background: #0087c9;
 }
 
 .box-custom-variant-1 .box-header:after,
@@ -32150,7 +32150,7 @@ ul ul, ul ol, ol ul, ol ol {
 	color:#3e3e3e;
 	/*background: #1872c5;*/
 	/*background: #fdba2d;*/
-	border-bottom: 20px solid #0061af;
+	border-bottom: 20px solid #0087ca;
 }
 
 .rd-navbar-static.rd-navbar-dark:before, .rd-navbar-static.rd-navbar-dark:after,
@@ -32167,7 +32167,7 @@ ul ul, ul ol, ol ul, ol ol {
 	width: 130vw;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
-	background: #0061af;
+	background: #0087ca;
 }
 
 
@@ -32213,7 +32213,7 @@ ul ul, ul ol, ol ul, ol ol {
 .rd-navbar-sidebar.rd-navbar-dark .rd-navbar-nav > li > a:active,
 .rd-navbar-sidebar.rd-navbar-dark .rd-navbar-nav > li > a:focus {
 	/*color: #fff;*/
-	color:#0061af;
+	color:#0087cb;
 }
 
 .rd-navbar-static.rd-navbar-dark .rd-navbar-nav > li > a:hover,
@@ -32266,7 +32266,7 @@ ul ul, ul ol, ol ul, ol ol {
 .rd-navbar-static.rd-navbar-dark.rd-navbar--is-stuck .rd-navbar-nav > li > a:hover,
 .rd-navbar-fullwidth.rd-navbar-dark.rd-navbar--is-stuck .rd-navbar-nav > li > a:hover,
 .rd-navbar-sidebar.rd-navbar-dark.rd-navbar--is-stuck .rd-navbar-nav > li > a:hover {
-	color: #e74a32;
+	color: #a5d4ff;
 }
 
 .rd-navbar-static.rd-navbar-dark.rd-navbar--is-stuck .rd-navbar-nav > li.focus > a,
@@ -32309,7 +32309,7 @@ ul ul, ul ol, ol ul, ol ol {
 }
 
 .rd-navbar-static.rd-navbar-dark.rd-navbar--is-stuck {
-	border-bottom: 1px solid #0061af;
+	border-bottom: 1px solid #0087ca;
 }
 
 /*==================  Material Parallax    ======================*/
