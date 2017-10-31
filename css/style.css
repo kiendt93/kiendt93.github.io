@@ -23270,7 +23270,7 @@ th {
 	left: 0;
 	right: 0;
 	z-index: 10000;
-	border-top: 1px solid #777;
+	/*border-top: 1px solid #777;*/
 }
 
 .table-bordered > thead > tr > th {
