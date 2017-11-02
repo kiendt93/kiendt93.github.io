@@ -39105,3 +39105,9 @@ img.mfp-img {
 .rd-navbar--is-stuck .display-menu{
 	display: block;
 }
+.background-menu{
+	background-color: #eef5ff;
+}
+.rd-navbar--is-stuck .background-menu{
+	background-color:#0087ca;
+}
