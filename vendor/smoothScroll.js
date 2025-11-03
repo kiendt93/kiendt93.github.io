@@ -433,7 +433,13 @@ function overflowingAncestor(el) {
  ***********************************************/
  
 function addEvent(type, fn, bubble) {
-    window.addEventListener(type, fn, (bubble||false));
+    var options = (bubble||false);
+    // Sửa lỗi passive event listener cho wheel event
+    if (type === 'wheel' || type === 'mousewheel') {
+        window.addEventListener(type, fn, { passive: false });
+    } else {
+        window.addEventListener(type, fn, options);
+    }
 }
  
 function removeEvent(type, fn, bubble) {

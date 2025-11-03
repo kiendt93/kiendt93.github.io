@@ -455,14 +455,201 @@
 <!-- /Main Content
 ================================================== -->
 
-<audio id="myAudio" controls autoplay>
+<audio id="myAudio" loop preload="auto">
   <source src="music/music1.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Nút phát/dừng nhạc -->
+<div id="musicToggle" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background: rgba(0,0,0,0.6); border-radius: 50%; cursor: pointer; z-index: 9999; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); transition: all 0.3s;">
+  <i class="fa fa-play" id="musicIcon"></i>
+</div>
+
 <script>
-function myFunction() {
-  var x = document.getElementById("myAudio").autoplay;
+var audio = document.getElementById("myAudio");
+var musicToggle = document.getElementById("musicToggle");
+var musicIcon = document.getElementById("musicIcon");
+var isPlaying = false;
+var audioStarted = false;
+
+// Cập nhật icon nút
+function updateButtonIcon() {
+  if (audio.paused) {
+    musicIcon.className = "fa fa-play";
+  } else {
+    musicIcon.className = "fa fa-pause";
+  }
 }
+
+// Hàm phát nhạc (cho autoplay)
+function playAudio() {
+  if (!audio || audioStarted) return;
+  
+  // Thử phát nhạc (có thể bị chặn)
+  var playPromise = audio.play();
+  
+  // Xử lý Promise nếu có
+  if (playPromise !== undefined) {
+    playPromise.then(function() {
+      // Phát thành công
+      audioStarted = true;
+      isPlaying = true;
+      updateButtonIcon();
+      console.log("Nhạc đã được phát tự động");
+    }).catch(function(error) {
+      // Autoplay bị chặn - sử dụng muted autoplay trick
+      audio.muted = true;
+      var mutedPromise = audio.play();
+      if (mutedPromise !== undefined) {
+        mutedPromise.then(function() {
+          // Đã phát thành công với muted, giờ unmute
+          audio.muted = false;
+          audioStarted = true;
+          isPlaying = true;
+          updateButtonIcon();
+          console.log("Nhạc đã được phát (muted autoplay)");
+        }).catch(function(err) {
+          // Vẫn bị chặn - hiển thị nút để người dùng click
+          console.log("Autoplay bị chặn - vui lòng click nút để phát nhạc");
+          musicToggle.style.display = "flex";
+        });
+      }
+    });
+  } else {
+    // Fallback cho trình duyệt cũ
+    try {
+      audio.play();
+      audioStarted = true;
+      isPlaying = true;
+      updateButtonIcon();
+    } catch(e) {
+      musicToggle.style.display = "flex";
+    }
+  }
+}
+
+// Hàm phát nhạc khi user click (không bị chặn bởi audioStarted)
+function playAudioOnClick() {
+  if (!audio) {
+    console.error("Audio element không tồn tại");
+    return;
+  }
+  
+  // Đảm bảo audio được load
+  if (audio.readyState < 2) {
+    audio.load();
+  }
+  
+  // Unmute để đảm bảo có âm thanh
+  audio.muted = false;
+  
+  // Thử phát nhạc
+  var playPromise = audio.play();
+  
+  if (playPromise !== undefined) {
+    playPromise.then(function() {
+      isPlaying = true;
+      audioStarted = true;
+      updateButtonIcon();
+      console.log("Nhạc đã được phát khi click nút");
+    }).catch(function(error) {
+      console.error("Lỗi khi phát nhạc:", error);
+      // Thử lại với muted trước
+      audio.muted = true;
+      audio.play().then(function() {
+        audio.muted = false;
+        isPlaying = true;
+        audioStarted = true;
+        updateButtonIcon();
+        console.log("Nhạc đã được phát (sau khi unmute)");
+      }).catch(function(err) {
+        console.error("Vẫn không thể phát nhạc:", err);
+        alert("Không thể phát nhạc. Lỗi: " + err.message + "\n\nVui lòng kiểm tra:\n1. File nhạc có tồn tại không\n2. Trình duyệt có hỗ trợ audio không\n3. Xem Console để biết thêm chi tiết");
+      });
+    });
+  } else {
+    // Fallback cho trình duyệt cũ
+    try {
+      audio.play();
+      isPlaying = true;
+      audioStarted = true;
+      updateButtonIcon();
+    } catch(e) {
+      console.error("Lỗi phát nhạc:", e);
+      alert("Không thể phát nhạc: " + e.message);
+    }
+  }
+}
+
+// Xử lý click vào nút
+musicToggle.addEventListener('click', function(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  
+  console.log("Nút được click. Audio paused:", audio.paused, "ReadyState:", audio.readyState);
+  
+  if (audio.paused) {
+    playAudioOnClick();
+  } else {
+    audio.pause();
+    isPlaying = false;
+    updateButtonIcon();
+    console.log("Nhạc đã được tạm dừng");
+  }
+});
+
+// Lắng nghe sự kiện thay đổi trạng thái audio
+audio.addEventListener('play', function() {
+  updateButtonIcon();
+  console.log("Audio đang phát");
+});
+audio.addEventListener('pause', function() {
+  updateButtonIcon();
+  console.log("Audio đã tạm dừng");
+});
+audio.addEventListener('error', function(e) {
+  console.error("Lỗi audio:", e);
+  console.error("Audio error details:", audio.error);
+  alert("Có lỗi xảy ra khi tải nhạc. Vui lòng kiểm tra đường dẫn file: music/music1.mp3");
+});
+audio.addEventListener('loadeddata', function() {
+  console.log("Audio đã được tải");
+});
+audio.addEventListener('canplay', function() {
+  console.log("Audio sẵn sàng để phát");
+});
+
+// Hàm để thử phát nhạc khi user tương tác lần đầu
+function tryPlayOnInteraction(e) {
+  if (!audioStarted) {
+    playAudio();
+    // Loại bỏ các listener sau khi đã thử phát
+    document.removeEventListener('click', tryPlayOnInteraction);
+    document.removeEventListener('touchstart', tryPlayOnInteraction);
+    document.removeEventListener('scroll', tryPlayOnInteraction);
+    document.removeEventListener('keydown', tryPlayOnInteraction);
+    document.removeEventListener('mousemove', tryPlayOnInteraction);
+  }
+}
+
+// Thử phát nhạc khi trang tải xong
+window.addEventListener('load', function() {
+  setTimeout(playAudio, 500);
+});
+
+// Cũng thử phát khi DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(playAudio, 1000);
+});
+
+// Nếu autoplay không thành công, thử phát khi user tương tác
+document.addEventListener('click', tryPlayOnInteraction, { once: true });
+document.addEventListener('touchstart', tryPlayOnInteraction, { once: true });
+document.addEventListener('scroll', tryPlayOnInteraction, { once: true });
+document.addEventListener('keydown', tryPlayOnInteraction, { once: true });
+document.addEventListener('mousemove', tryPlayOnInteraction, { once: true });
+
+// Cập nhật icon ban đầu
+updateButtonIcon();
 </script>
 
 <!-- >> JS
